@@ -29,27 +29,42 @@ const Task = ({ task, onDelete, onEditSatus }) => {
           <p>{dateTime}</p>
           <h6>{userName}</h6>
           <Button
-            variant="outline-success"
-            className="me-1"
+            variant={
+              status === "NEW"
+                ? "info"
+                : status === "IN PROGRESS"
+                ? "warning"
+                : "success"
+            }
+            className="me-1 mb-1"
             onClick={() => {
               onEditSatus(task);
             }}
           >
             {status}
           </Button>
-          <Button variant="outline-success" className="me-1">
+          <Button
+            variant={
+              importance === "LOW"
+                ? "outline-info"
+                : importance === "MEDIUM"
+                ? "outline-warning"
+                : "danger"
+            }
+            className="me-1"
+          >
             {importance}
           </Button>
           <p>{!showLessButton && limitString(description).string}</p>
           {!showLessButton && limitString(description).addButton && (
             <Button
-              variant="success"
+              variant="outline-success"
               className="me-1"
               onClick={() => {
                 setShowLessButton(true);
               }}
             >
-              ver mas
+              Ver mas...
             </Button>
           )}
           {showLessButton && limitString(description).addButton && (

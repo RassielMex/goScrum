@@ -62,7 +62,7 @@ const TaskForm = ({ showAlert }) => {
 
   return (
     <>
-      <h3>Crear Tareas</h3>
+      <h3 className="mt-4">Crear Tareas</h3>
       <p>Crea tu tarea</p>
       <Form onSubmit={handleSubmit}>
         <Form.Control
