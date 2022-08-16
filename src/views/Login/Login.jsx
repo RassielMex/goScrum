@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Form } from "react-bootstrap";
+import { Alert, Button, Card, Container, Form } from "react-bootstrap";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
@@ -64,46 +64,53 @@ const Login = () => {
   const { handleChange, handleBlur, errors, touched, values } = formik;
 
   return (
-    <div className="container min-vh-100 d-flex flex-column justify-content-center align-items-center">
-      <h2>Login</h2>
-      <Alert variant="danger" show={alertConfig.show} transition={true}>
-        {alertConfig.message}
-      </Alert>
-      <Form className="w-50" onSubmit={formik.handleSubmit}>
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>UserName: </Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter User Name"
-            name="userName"
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          {errors.userName && touched.userName && (
-            <Form.Text className="text-danger">{errors.userName}</Form.Text>
-          )}
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Contraseña: </Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Enter password"
-            name="password"
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          {errors.password && touched.password && (
-            <Form.Text className="text-danger">{errors.password}</Form.Text>
-          )}
-        </Form.Group>
-        <div className="d-grid">
-          <button type="submit" className="btn btn-outline-success">
-            Login
-          </button>
-        </div>
-      </Form>
-      <Link to="/Register">Registrarse</Link>
-    </div>
+    <Container
+      fluid
+      className="min-vh-100 d-flex flex-column justify-content-center align-items-center bg-light"
+    >
+      <Card className="d-flex align-items-center">
+        <Card.Body className="w-100">
+          <Card.Title className="text-center">Login</Card.Title>
+          <Alert variant="danger" show={alertConfig.show} transition={true}>
+            {alertConfig.message}
+          </Alert>
+          <Form onSubmit={formik.handleSubmit}>
+            <Form.Group className="mb-3" controlId="email">
+              <Form.Label>UserName: </Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter User Name"
+                name="userName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {errors.userName && touched.userName && (
+                <Form.Text className="text-danger">{errors.userName}</Form.Text>
+              )}
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="password">
+              <Form.Label>Contraseña: </Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                name="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {errors.password && touched.password && (
+                <Form.Text className="text-danger">{errors.password}</Form.Text>
+              )}
+            </Form.Group>
+            <Button type="submit" variant="primary" className="w-100">
+              Login
+            </Button>
+          </Form>
+          <Link to="/Register">
+            <p className="text-info text-center mt-3">Registrarse</p>
+          </Link>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 };
 

@@ -1,0 +1,24 @@
+//Options
+$enable-shadows: true;
+
+//Custom variables
+$primary: rgba(81, 203, 206, 1);
+$secondary: rgba(239, 129, 87, 1);
+$success: rgba(107, 208, 152, 1);
+$info: rgba(81, 188, 218, 1);
+$warning: rgba(251, 198, 88, 1);
+$danger: rgba(232, 62, 140, 1);
+$light: rgba(248, 249, 250, 1);
+$dark: rgba(44, 44, 44, 1);
+
+//Cards
+$card-border-radius: 1rem;
+//$card-border-color: none;
+$card-box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+$card-border-width: none;
+
+//buttons
+$btn-border-radius: 1rem;
+$btn-border-radius-sm: 0.8rem;
+
+@import "../node_modules/bootstrap/scss/bootstrap";

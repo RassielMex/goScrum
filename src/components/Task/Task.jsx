@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, CloseButton, Col, Row } from "react-bootstrap";
+import { Badge, Button, Card, CloseButton, Col, Row } from "react-bootstrap";
 
 const Task = ({ task, onDelete, onEditSatus }) => {
   const [showLessButton, setShowLessButton] = useState(false);
@@ -28,12 +28,12 @@ const Task = ({ task, onDelete, onEditSatus }) => {
           <h5>{title}</h5>
           <p>{dateTime}</p>
           <h6>{userName}</h6>
-          <Button
-            variant={
+          <Badge
+            bg={
               status === "NEW"
                 ? "info"
                 : status === "IN PROGRESS"
-                ? "warning"
+                ? "secondary"
                 : "success"
             }
             className="me-1 mb-1"
@@ -42,23 +42,24 @@ const Task = ({ task, onDelete, onEditSatus }) => {
             }}
           >
             {status}
-          </Button>
-          <Button
-            variant={
+          </Badge>
+          <Badge
+            bg={
               importance === "LOW"
-                ? "outline-info"
+                ? "primary"
                 : importance === "MEDIUM"
-                ? "outline-warning"
+                ? "warning"
                 : "danger"
             }
             className="me-1"
           >
             {importance}
-          </Button>
+          </Badge>
           <p>{!showLessButton && limitString(description).string}</p>
           {!showLessButton && limitString(description).addButton && (
             <Button
-              variant="outline-success"
+              size="sm"
+              variant="outline-primary"
               className="me-1"
               onClick={() => {
                 setShowLessButton(true);
@@ -71,7 +72,8 @@ const Task = ({ task, onDelete, onEditSatus }) => {
             <>
               <p>{description}</p>
               <Button
-                variant="success"
+                size="sm"
+                variant="outline-primary"
                 className="me-1"
                 onClick={() => {
                   setShowLessButton(false);

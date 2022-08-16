@@ -16,19 +16,12 @@ const Header = () => {
   const { tasks } = useSelector((state) => state.taskReducer);
 
   return (
-    <Navbar bg="success" variant="dark">
+    <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">Go Scrum</Navbar.Brand>
-        {/* <Nav className="me-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav> */}
+        <Navbar.Brand href="">Go Scrum</Navbar.Brand>
         <Container className="d-flex justify-content-end align-content-center align-items-center">
-          <p className="me-1 mb-0 text-light ">
-            Tareas creadas:{tasks?.length}
-          </p>
-          <p className="me-1 mb-0 text-light">
+          <p className="me-1 mb-0 text-white">Tareas creadas:{tasks?.length}</p>
+          <p className="me-1 mb-0 text-white">
             {localStorage.getItem("userName")}
           </p>
           <BiLogOut size={"1.5em"} color="white" onClick={handleLogOut} />

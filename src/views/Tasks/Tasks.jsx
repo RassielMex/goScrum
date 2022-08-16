@@ -106,66 +106,68 @@ const Tasks = () => {
       >
         {message}
       </Alert>
-      <Container>
-        <Row>
-          <Col lg={4}>
-            <TaskForm showAlert={handleShowAlert} />
-          </Col>
-          <Col>
-            <h3 className="mt-4">Mis tareas</h3>
-            <Form className="mb-3">
-              <FormGroup>
-                <Form.Check
-                  label="Todas"
-                  type="radio"
-                  name="Tareas"
-                  inline
-                  id="all"
-                  onChange={handleFromWhoChange}
+      <Container fluid className="bg-light">
+        <Container>
+          <Row>
+            <Col lg={4}>
+              <TaskForm showAlert={handleShowAlert} />
+            </Col>
+            <Col>
+              <h3 className="mt-4">Mis tareas</h3>
+              <Form className="mb-3">
+                <FormGroup>
+                  <Form.Check
+                    label="Todas"
+                    type="radio"
+                    name="Tareas"
+                    inline
+                    id="all"
+                    onChange={handleFromWhoChange}
+                  />
+                  <Form.Check
+                    label="Mis tareas"
+                    type="radio"
+                    name="Tareas"
+                    inline
+                    id="me"
+                    onChange={handleFromWhoChange}
+                  />
+                </FormGroup>
+                <Form.Control
+                  type="text"
+                  placeholder="Búsqueda...."
+                  onChange={handleSearch}
+                  className="my-1"
                 />
-                <Form.Check
-                  label="Mis tareas"
-                  type="radio"
-                  name="Tareas"
-                  inline
-                  id="me"
-                  onChange={handleFromWhoChange}
-                />
-              </FormGroup>
-              <Form.Control
-                type="text"
-                placeholder="Búsqueda...."
-                onChange={handleSearch}
-                className="my-1"
-              />
-              <FormGroup>
-                <Form.Select
-                  name="importance"
-                  onChange={handleChangeImportance}
-                >
-                  <option value="">Seleccione una...</option>
-                  <option value="ALL">ALL</option>
-                  <option value="LOW">Low</option>
-                  <option value="MEDIUM">Medium</option>
-                  <option value="HIGH">High</option>
-                </Form.Select>
-              </FormGroup>
-            </Form>
-            <Row>
-              {renderList.map((d) => {
-                return (
-                  <Col sm={6} md={4} key={d._id}>
-                    <Task
-                      task={d}
-                      onDelete={handleDeleteTask}
-                      onEditSatus={handleEditStatus}
-                    />
-                  </Col>
-                );
-              })}
-            </Row>
-          </Col>
-        </Row>
+                <FormGroup>
+                  <Form.Select
+                    name="importance"
+                    onChange={handleChangeImportance}
+                  >
+                    <option value="">Seleccione una...</option>
+                    <option value="ALL">ALL</option>
+                    <option value="LOW">Low</option>
+                    <option value="MEDIUM">Medium</option>
+                    <option value="HIGH">High</option>
+                  </Form.Select>
+                </FormGroup>
+              </Form>
+              <Row>
+                {renderList.map((d) => {
+                  return (
+                    <Col sm={6} md={4} key={d._id}>
+                      <Task
+                        task={d}
+                        onDelete={handleDeleteTask}
+                        onEditSatus={handleEditStatus}
+                      />
+                    </Col>
+                  );
+                })}
+              </Row>
+            </Col>
+          </Row>
+        </Container>
       </Container>
     </>
   );
