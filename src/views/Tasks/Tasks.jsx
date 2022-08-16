@@ -92,6 +92,14 @@ const Tasks = () => {
     dispatch(editStatus(task));
   };
 
+  const renderNewTasks = renderList.filter((task) => task.status === "NEW");
+  const renderInProgressTasks = renderList.filter(
+    (task) => task.status === "IN PROGRESS"
+  );
+  const renderFinishedTasks = renderList.filter(
+    (task) => task.status === "FINISHED"
+  );
+
   return (
     <>
       <Header />
@@ -153,17 +161,42 @@ const Tasks = () => {
                 </FormGroup>
               </Form>
               <Row>
-                {renderList.map((d) => {
-                  return (
-                    <Col sm={6} md={4} key={d._id}>
+                <Col md={4}>
+                  {renderNewTasks?.map((task) => {
+                    return (
                       <Task
-                        task={d}
+                        key={task?._id}
+                        task={task}
                         onDelete={handleDeleteTask}
                         onEditSatus={handleEditStatus}
                       />
-                    </Col>
-                  );
-                })}
+                    );
+                  })}
+                </Col>
+                <Col md={4}>
+                  {renderInProgressTasks.map((task) => {
+                    return (
+                      <Task
+                        key={task?._id}
+                        task={task}
+                        onDelete={handleDeleteTask}
+                        onEditSatus={handleEditStatus}
+                      />
+                    );
+                  })}
+                </Col>
+                <Col md={4}>
+                  {renderFinishedTasks.map((task) => {
+                    return (
+                      <Task
+                        key={task?._id}
+                        task={task}
+                        onDelete={handleDeleteTask}
+                        onEditSatus={handleEditStatus}
+                      />
+                    );
+                  })}
+                </Col>
               </Row>
             </Col>
           </Row>
