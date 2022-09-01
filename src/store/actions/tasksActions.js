@@ -28,7 +28,7 @@ export const getTasks = (path) => (dispatch) => {
   const endPoint = `${API_END_POINT}task/${path}`;
   const headers = {
     "Content-Type": "application/json",
-    Authorization: "Bearer " + localStorage.getItem("token"),
+    Authorization: "Bearer " + sessionStorage.getItem("token"),
   };
   axios
     .get(endPoint, { headers })
@@ -45,7 +45,7 @@ export const deleteTask = (id) => (dispatch) => {
   const endPoint = `${API_END_POINT}task/${id}`;
   const headers = {
     "Content-Type": "application/json",
-    Authorization: "Bearer " + localStorage.getItem("token"),
+    Authorization: "Bearer " + sessionStorage.getItem("token"),
   };
   axios
     .delete(endPoint, { headers })
@@ -68,7 +68,7 @@ export const editStatus = (task) => (dispatch) => {
   const endPoint = `${API_END_POINT}task/${task._id}`;
   const headers = {
     "Content-Type": "application/json",
-    Authorization: "Bearer " + localStorage.getItem("token"),
+    Authorization: "Bearer " + sessionStorage.getItem("token"),
   };
   axios
     .patch(

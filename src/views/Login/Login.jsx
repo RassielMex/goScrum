@@ -30,8 +30,8 @@ const Login = () => {
       .then((response) => {
         //console.log(response);
         if (response.status === 200) {
-          localStorage.setItem("token", response?.data?.result?.token);
-          localStorage.setItem(
+          sessionStorage.setItem("token", response?.data?.result?.token);
+          sessionStorage.setItem(
             "userName",
             response?.data?.result?.user?.userName
           );

@@ -31,7 +31,7 @@ const Tasks = () => {
     dispatch(getTasks(fromWho));
   }, [fromWho, dispatch]);
 
-  const { loading, error, tasks } = useSelector((state) => {
+  const { tasks } = useSelector((state) => {
     return state.taskReducer;
   });
 
