@@ -36,9 +36,12 @@ const Tasks = () => {
   });
 
   useEffect(() => {
-    if (tasks?.length) {
+    if (tasks?.length > 0) {
       setList(tasks);
       setRenderList(tasks);
+    } else if (tasks.length === 0) {
+      setList([]);
+      setRenderList([]);
     }
   }, [tasks]);
 
