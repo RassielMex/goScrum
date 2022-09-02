@@ -7,7 +7,7 @@ import Tasks from "../views/Tasks/Tasks";
 
 const RoutesComponent = () => {
   const RequireLogIn = ({ children }) => {
-    if (!localStorage.getItem("token")) {
+    if (!sessionStorage.getItem("token")) {
       return <Navigate to={"/Login"} replace={true} />;
     }
     return children;
