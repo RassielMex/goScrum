@@ -2,7 +2,9 @@ import axios from "axios";
 import { useFormik } from "formik";
 import React from "react";
 import { Button, Card, Form } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
+import { getTasks } from "../../store/actions/tasksActions";
 
 const { REACT_APP_API_END_POINT: API_END_POINT } = process.env;
 
@@ -13,6 +15,8 @@ const TaskForm = ({ showAlert }) => {
     importance: "",
     description: "",
   };
+
+  const dispatch = useDispatch();
 
   const onSubmit = () => {
     const endPoint = `${API_END_POINT}task/`;
@@ -30,6 +34,7 @@ const TaskForm = ({ showAlert }) => {
       .post(endPoint, { task }, { headers })
       .then((response) => {
         //console.log(response);
+        dispatch(getTasks(""));
         showAlert(true, "Tu tarea ha sido creada");
         resetForm();
       })
