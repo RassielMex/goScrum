@@ -36,10 +36,12 @@ const Tasks = () => {
   });
 
   useEffect(() => {
+    //console.log("Task changed");
     if (tasks?.length > 0) {
       setList(tasks);
       setRenderList(tasks);
-    } else if (tasks.length === 0) {
+    } else {
+      //console.log("task == 0");
       setList([]);
       setRenderList([]);
     }
