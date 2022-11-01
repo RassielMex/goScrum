@@ -5,11 +5,7 @@ import Task from "../../components/Task/Task";
 import TaskForm from "../../components/TaskForm/TaskForm";
 import debounce from "lodash/debounce";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getTasks,
-  deleteTask,
-  editStatus,
-} from "../../store/actions/tasksActions";
+import { getTasks, deleteTask, editStatus } from "../../store/slices/taskSlice";
 const Tasks = () => {
   const [list, setList] = useState([]);
   const [renderList, setRenderList] = useState([]);
@@ -18,21 +14,11 @@ const Tasks = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    //const endPoint = `${API_END_POINT}task${fromWho}`;
-    // const endPoint = "https://goscrum-api.alkemy.org/task";
-    // const headers = {
-    //   "Content-Type": "application/json",
-    //   Authorization: "Bearer " + localStorage.getItem("token"),
-    // };
-    // axios.get(endPoint, { headers }).then((response) => {
-    //   setList(response.data.result);
-    //   setRenderList(response.data.result);
-    // });
     dispatch(getTasks(fromWho));
   }, [fromWho, dispatch]);
 
   const { tasks } = useSelector((state) => {
-    return state.taskReducer;
+    return state.tasks;
   });
 
   useEffect(() => {

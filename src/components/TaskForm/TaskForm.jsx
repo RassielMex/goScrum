@@ -1,14 +1,14 @@
-import axios from "axios";
 import { useFormik } from "formik";
 import React from "react";
 import { Button, Card, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
-import { getTasks } from "../../store/actions/tasksActions";
-
-const { REACT_APP_API_END_POINT: API_END_POINT } = process.env;
+import { createTask } from "../../store/slices/taskSlice";
 
 const TaskForm = ({ showAlert }) => {
+  const { error, loading } = useSelector((state) => {
+    return state.tasks;
+  });
   const initialValues = {
     title: "",
     status: "",
@@ -19,28 +19,17 @@ const TaskForm = ({ showAlert }) => {
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    const endPoint = `${API_END_POINT}task/`;
     const task = {
       title: values.title,
       status: values.status,
       importance: values.importance,
       description: values.description,
     };
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + sessionStorage.getItem("token"),
-    };
-    axios
-      .post(endPoint, { task }, { headers })
-      .then((response) => {
-        //console.log(response);
-        dispatch(getTasks(""));
-        showAlert(true, "Tu tarea ha sido creada");
-        resetForm();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(createTask(task));
+    if (!loading && !error) {
+      showAlert(true, "Tu tarea ha sido creada");
+      resetForm();
+    }
   };
 
   const required = "*Campo Oblligatorio";

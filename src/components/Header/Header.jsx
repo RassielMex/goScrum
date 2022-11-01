@@ -13,7 +13,7 @@ const Header = () => {
     navigate("/Login", { replace: true });
   };
 
-  const { tasks } = useSelector((state) => state.taskReducer);
+  const { tasks } = useSelector((state) => state.tasks);
 
   return (
     <Navbar bg="dark" variant="dark">
